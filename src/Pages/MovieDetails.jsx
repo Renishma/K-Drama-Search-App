@@ -2,19 +2,16 @@ import React from 'react';
 import '../App.css';
 
 const MovieDetails = ({ selected, close }) => {
-    // Format date to show only year
     const releaseYear = selected.first_air_date 
         ? new Date(selected.first_air_date).getFullYear() 
         : 'Unknown year';
 
-    // Format rating with stars
     const renderRating = () => {
         if (!selected.vote_average) return 'No rating available';
         const stars = '⭐'.repeat(Math.round(selected.vote_average / 2));
         return `${stars} (${selected.vote_average}/10)`;
     };
 
-    // Format genres if available
     const renderGenres = () => {
         if (!selected.genres || selected.genres.length === 0) {
             return 'Genre information not available';
